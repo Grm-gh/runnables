@@ -19,6 +19,7 @@ detailed_prompt= ChatPromptTemplate.from_template("explain {topic} in deatil")
 #input
 topic ="Ai engineering"
 
+# runnable lambda
 chains=RunnableParallel({
     "short":RunnableLambda(lambda x:x['short']) |short_prompt | model | parser,
     "detailed": RunnableLambda(lambda y:y['long']) | detailed_prompt | model | parser
